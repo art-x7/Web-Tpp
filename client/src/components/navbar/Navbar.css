@@ -1,0 +1,25 @@
+.navBar {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .navItems {
+    display: flex;
+  }
+  
+  .navItems li {
+    font-size: 24px;
+    padding: 10px;
+    font-weight: bold;
+  }
+  
+  .navItems li a {
+    color: #326876;
+  }
+  
+  .navItems li a:hover {
+    color: #112D32;
+    margin: 0 10px;
+    transition: margin .3s, color .3s linear;
+  }
