@@ -76,7 +76,7 @@ const AddProcess = () => {
                                         <td>{index + 1}</td>
                                         <td>{item.processName}</td>
                                         <td>{item.company}</td>
-                                        <td><Button variant="danger" onClick={e => dispatch(delProcess(item.id))}>Delete</Button></td>
+                                        <td><Button className='btn-sm' variant="danger" onClick={e => dispatch(delProcess(item.id))}>Delete</Button></td>
                                     </tr>
                                 )}
                         </tbody>

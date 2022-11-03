@@ -3,11 +3,17 @@ const express = require('express')
 
 const PORT = process.env.PORT || 5000
 const app = express()
+app.use(express.json())
 
-app.get('/', (req, res) => {
-    res.json({message: 'hello'})
+
+app.post('/', (req, res) => {
+    console.log(req.body)
+    res.json({message: 'POST it is work'})
 })
 
+app.get('/', (req, res) => {
+    res.json({message: 'GET it is work'})
+})
 
 const start = () => {
     try {

@@ -12,13 +12,13 @@ const initialState = [
     },
   ]
 
-  process: [{id: 1, process: 'MSP', tppInit: {
-    material:'', uph: ''
-  }}, {id: 1, process: 'Wire Bond', tppInit: {
-    material:'', uph: ''
-  }}, {id: 1, process: 'Molding', tppInit: {
-    material:'', uph: ''
-  }}]
+  // process: [{id: 1, process: 'MSP', tppInit: {
+  //   material:'', uph: ''
+  // }}, {id: 1, process: 'Wire Bond', tppInit: {
+  //   material:'', uph: ''
+  // }}, {id: 1, process: 'Molding', tppInit: {
+  //   material:'', uph: ''
+  // }}]
 
 
 

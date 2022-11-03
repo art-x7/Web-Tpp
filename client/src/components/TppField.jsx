@@ -8,19 +8,17 @@ import Row from 'react-bootstrap/esm/Row';
 import Form from 'react-bootstrap/Form';
 
 
-import { selectAllMaterials } from '../store/reducers/materialSlice';
+
 import { selectAllProducts } from '../store/reducers/productSlice';
 import { selectAllEquipment } from '../store/reducers/equipmentSlice';
 import { selectAllTool } from '../store/reducers/toolSlice';
+import FormMaterial from './FormMaterial';
 
 
 const TppField = ({processName}) => {
 
     const initialState = {
         product: '',
-        material: '',
-        consumption: '',
-        lost: '',
         equipment: '',
         tool: '',
         uph: '',
@@ -28,14 +26,18 @@ const TppField = ({processName}) => {
         retrofit: false,
         comment: ''
     }
-    
-    const dispatch = useDispatch()
+
+
+
+    // const dispatch = useDispatch()
     const [ data, setData ] = useState(initialState)
+    const [ mat, setMat ] = useState([
+        {}
+    ])
     const [ check, setCheck ] = useState(false)
 
     const equipments = useSelector(selectAllEquipment).filter(equip => equip.process === processName)
     const tools = useSelector(selectAllTool).filter(tool => tool.process === processName)
-    const materials = useSelector(selectAllMaterials).filter(item => item.processName === processName)
     const products = useSelector(selectAllProducts).filter(item => 
         {
             for(let i = 0; i < item.process.length; i++) {
@@ -49,6 +51,11 @@ const TppField = ({processName}) => {
         setData({...data, [e.target.name]: e.target.value})
     }
 
+    const handleMaterialChange = (e) => {
+        setMat({...mat, [e.target.name]: e.target.value})
+    }
+
+
     const handleOnChange = (e) => {
         setCheck(!check)
         setData({...data, [e.target.name]: e.target.checked})
@@ -56,18 +63,13 @@ const TppField = ({processName}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(data)
-
+        console.log(mat)
         setData(initialState)
         setCheck(false)
     }
 
     const canSave = 
         Boolean(data.product) && 
-        Boolean(data.material) && 
-        Boolean(data.material) && 
-        Boolean(data.consumption) && 
-        Boolean(data.lost) && 
         Boolean(data.equipment) && 
         Boolean(data.tool) &&
         Boolean(data.uph) && 
@@ -87,31 +89,12 @@ const TppField = ({processName}) => {
                         </Form.Select>
                     </Form.Group>
                 </Row>
-                <Row>
-                    <Form.Group className="mb-3">
-                        <Form.Label>Материал</Form.Label>
-                        <Form.Select aria-label="Default select example" name='material' value={data.material} onChange={handleChange}>
-                            <option disabled selected value=''>Материалы...</option>
-                            {materials.map(item => <option key={item.id} value={item.materialName}>{item.materialName}</option>)}
-                        </Form.Select>
-                    </Form.Group>
-                </Row>
-                
-                <Row>
-                    <Col>
-                        <Form.Group className="mb-3" >
-                            <Form.Label>Расход на 1000 шт</Form.Label>
-                            <Form.Control type="text" placeholder="Расход" name='consumption' value={data.consumption} onChange={handleChange}/>
-                        </Form.Group>
-                    </Col>
-                    <Col>
-                        <Form.Group className="mb-3" >
-                            <Form.Label>Потери на 1000 шт</Form.Label>
-                            <Form.Control type="text" placeholder="Потери" name='lost' value={data.lost} onChange={handleChange}/>
-                        </Form.Group>
-                    </Col>
-                </Row>
 
+               
+                    <FormMaterial processName={processName} mat={mat} handleMaterialChange={handleMaterialChange}/>
+                    <FormMaterial processName={processName} mat={mat} handleMaterialChange={handleMaterialChange}/>
+                    <FormMaterial processName={processName} mat={mat} handleMaterialChange={handleMaterialChange}/>
+     
                 <Row>
                     <Col>
                         <Form.Group className="mb-3">
@@ -132,7 +115,7 @@ const TppField = ({processName}) => {
                         </Form.Group>
                     </Col>
                 </Row>
-
+                
                 <Row>
                     <Col>
                         <Form.Group className="mb-3" >
@@ -159,7 +142,7 @@ const TppField = ({processName}) => {
                     </Form.Group>
                 </Row>
 
-                <Button disabled={!canSave} variant="primary" type="submit" onClick={handleSubmit}>
+                <Button variant="primary" type="submit" onClick={handleSubmit}>
                     Отправить
                 </Button>
             </Form> :

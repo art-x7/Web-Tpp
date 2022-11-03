@@ -64,7 +64,7 @@ const AddEquipment = ({processName}) => {
                                 name='tool'
                                 type="text"
                                 value={tool}
-                                onChange={e => setTool(e.target.value.trim())} />
+                                onChange={e => setTool(e.target.value)} />
                         </Form.Group>
 
                         <Button
@@ -90,7 +90,7 @@ const AddEquipment = ({processName}) => {
                                     <tr key={equip.id}>
                                         <td>{index +1}</td>
                                         <td>{equip.equipment}</td>
-                                        <td><Button variant="danger" onClick={e => dispatch(delEquipment(equip.id))}>Удалить</Button></td>
+                                        <td><Button className='btn-sm' variant="danger" onClick={e => dispatch(delEquipment(equip.id))}>Удалить</Button></td>
                                     </tr>)
                            }
                         </tbody>
@@ -111,7 +111,7 @@ const AddEquipment = ({processName}) => {
                                     <tr key={tool.id}>
                                         <td>{index +1}</td>
                                         <td>{tool.tool}</td>
-                                        <td><Button variant="danger" onClick={e => dispatch(delTool(tool.id))}>Удалить</Button></td>
+                                        <td><Button className='btn-sm' variant="danger" onClick={e => dispatch(delTool(tool.id))}>Удалить</Button></td>
                                     </tr>)
                            }
                         </tbody>

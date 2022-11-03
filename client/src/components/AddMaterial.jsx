@@ -14,14 +14,14 @@ const AddMaterial = ({processName}) => {
 
     const dispatch = useDispatch()
     const allMaterials = useSelector(selectAllMaterials)
-    const materials = allMaterials.filter(material => material.processName == processName)
+    const materials = allMaterials.filter(material => material.processName === processName)
 
     const [ materialName, setMaterialName ] = useState('')
     const [ unit, setUnit ] = useState('')
     
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (allMaterials.find(item => item.materialName.split(' ').join('').toLowerCase() == materialName.split(' ').join('').toLowerCase())) {
+        if (allMaterials.find(item => item.materialName.split(' ').join('').toLowerCase() === materialName.split(' ').join('').toLowerCase())) {
             setMaterialName('')
             setUnit('')
             alert('Такое имя уже существует')
@@ -44,7 +44,7 @@ const AddMaterial = ({processName}) => {
                                 name='materialName'
                                 type="text"
                                 value={materialName}
-                                onChange={e => setMaterialName(e.target.value.trim())} />
+                                onChange={e => setMaterialName(e.target.value)} />
                         </Form.Group>
 
                         <Form.Group className="mb-3">
@@ -53,7 +53,7 @@ const AddMaterial = ({processName}) => {
                                 name='unit'
                                 type="text"
                                 value={unit}
-                                onChange={e => setUnit(e.target.value.trim())} />
+                                onChange={e => setUnit(e.target.value)} />
                         </Form.Group>
 
                         <Button
@@ -81,7 +81,7 @@ const AddMaterial = ({processName}) => {
                                     <td>{index + 1}</td>
                                     <td>{item.materialName}</td>
                                     <td>{item.unit}</td>
-                                    <td><Button variant="danger" onClick={e => dispatch(delMaterial(item.id))}>Delete</Button></td>
+                                    <td><Button className='btn-sm' variant="danger" onClick={e => dispatch(delMaterial(item.id))}>Delete</Button></td>
                                 </tr>)
                             }
                         </tbody>

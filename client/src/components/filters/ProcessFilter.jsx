@@ -8,9 +8,9 @@ const ProcessFilter = () => {
     
     return (
         <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-            <Button variant="secondary" onClick={() => dispatch(changeFilter('all'))}>Все</Button>
-            <Button variant="secondary" onClick={() => dispatch(changeFilter('GSN'))}>GSN</Button>
-            <Button variant="secondary" onClick={() => dispatch(changeFilter('LED'))}>LED</Button>
+            <Button className='btn-sm' variant="secondary" onClick={() => dispatch(changeFilter('all'))}>Все</Button>
+            <Button className='btn-sm' variant="secondary" onClick={() => dispatch(changeFilter('GSN'))}>GSN</Button>
+            <Button className='btn-sm' variant="secondary" onClick={() => dispatch(changeFilter('LED'))}>LED</Button>
         </div>
     )
 }

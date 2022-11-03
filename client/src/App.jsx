@@ -8,6 +8,7 @@ import Navbar from './components/navbar/Navbar'
 import StatusTpp from './components/pages/Status'
 import TppConfig from './components/pages/TppConfig'
 import Process from './components/pages/Process'
+import PelletCalculator from './components/pages/pelletCalculator/PelletCalculator'
 
 export default function App() {
 
@@ -19,7 +20,7 @@ export default function App() {
         <Route path='status' element={<StatusTpp />} />
         <Route path='process/*' element={<Process />} />
         <Route path='config' element={<TppConfig />} />
-        <Route to='*' element={<Home />} replace />
+        <Route path='calculator' element={<PelletCalculator />} />
       </Routes>
     </>
   )

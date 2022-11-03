@@ -44,7 +44,7 @@ const TppForm = () => {
             type="text" 
             placeholder="Название продукта"
             value={tpp_name} 
-            onChange={e => setTpp_name(e.target.value.trim())} />
+            onChange={e => setTpp_name(e.target.value)} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicOwner">
@@ -53,7 +53,7 @@ const TppForm = () => {
             type="text" 
             placeholder="Владелец" 
             value={owner} 
-            onChange={e => setOwner(e.target.value.trim())}/>
+            onChange={e => setOwner(e.target.value)}/>
         </Form.Group>
 
         <Form.Group controlId="formFileMultiple" className="mb-3">
